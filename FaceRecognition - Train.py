@@ -120,9 +120,9 @@ if __name__ == '__main__':
 
     X, Y = model.loadFeatures(outDir)
 
-    model.featuresToPCA(X, Y, filePCA)
+    # model.featuresToPCA(X, Y, filePCA)
 
-    X, Y = model.loadPCAFeatures(filePCA)
+    # X, Y = model.loadPCAFeatures(filePCA)
     if False == X:
         print("")
         print("Errrrrrrrr.... \nPCA Features not present.\nPlease try to scan the images and collect the features.")
@@ -130,4 +130,4 @@ if __name__ == '__main__':
 
     print("Classes Loaded: "+str(len(set(Y))))
     print("Features Loaded: ("+str(len(X)//len(set(Y)))+", "+str(len(X[0]))+") for each class.")
-    model.train(SVC(kernel='linear', C=0.3), 'SVC(Linear)Classifier', X, Y, fileClf)
+    model.train(SVC(kernel='linear', C=0.3, probability=True), 'SVC(Linear)Classifier', X, Y, fileClf)
